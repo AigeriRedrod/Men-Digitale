@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Menù Digitale</title>
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+            background: url('images/wood_texture.jpg') no-repeat center center fixed;
+            background-size: cover;
+            background-color: #2f4f4f; /* Blu pastello scuro */
+        }
+
+        .menu-container {
+            background-color: rgba(47, 79, 79, 0.9); /* Semi-trasparente per far vedere le venature */
+            max-width: 800px;
+            margin: 20px auto;
+            padding: 20px;
+            border-radius: 15px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+            color: white;
+        }
+
+        h1, h2 {
+            text-align: center;
+            margin-bottom: 10px;
+        }
+
+        .menu-item {
+            display: flex;
+            align-items: center;
+            margin: 10px 0;
+            padding: 10px;
+            background-color: rgba(255, 255, 255, 0.1);
+            border-radius: 10px;
+        }
+
+        .menu-item img {
+            width: 60px;
+            height: 60px;
+            border-radius: 8px;
+            margin-right: 15px;
+            object-fit: cover;
+            border: 2px solid white;
+        }
+
+        .menu-item p {
+            margin: 0;
+            font-size: 18px;
+        }
+    </style>
+</head>
+<body>
+    <div class="menu-container">
+        <h1>Menù</h1>
+
+        <section id="taglieri">
+            <h2>Taglieri</h2>
+            <div class="menu-item">
+                <img src="images/tagliere_misto.jpg" alt="Tagliere Misto">
+                <p>Tagliere Misto - 12€</p>
+            </div>
+        </section>
+
+        <section id="vini">
+            <h2>Vini</h2>
+            <div class="menu-item">
+                <img src="images/vino_rosso.jpg" alt="Vino Rosso">
+                <p>Chianti Classico - 5€ a calice</p>
+            </div>
+        </section>
+
+        <section id="birre">
+            <h2>Birre</h2>
+            <div class="menu-item">
+                <img src="images/birra_artigianale.jpg" alt="Birra Artigianale">
+                <p>Birra Artigianale - 4€</p>
+            </div>
+        </section>
+
+        <section id="liquori">
+            <h2>Liquori</h2>
+            <div class="menu-item">
+                <img src="images/grappa.jpg" alt="Grappa">
+                <p>Grappa - 3€</p>
+            </div>
+        </section>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
