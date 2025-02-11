@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Amministrazione Menù</title>
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+            background: url('images/wood_texture.jpg') no-repeat center center fixed;
+            background-size: cover;
+            background-color: #2f4f4f;
+        }
+
+        .admin-container {
+            background-color: rgba(47, 79, 79, 0.9);
+            max-width: 800px;
+            margin: 20px auto;
+            padding: 20px;
+            border-radius: 15px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+            color: white;
+        }
+
+        h2 {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        .admin-controls {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+
+        .admin-controls input, .admin-controls button {
+            padding: 10px;
+            border-radius: 8px;
+            border: none;
+        }
+
+        .admin-controls button {
+            background-color: #ffa500;
+            color: white;
+            cursor: pointer;
+        }
+
+        .admin-controls button:hover {
+            background-color: #cc8400;
+        }
+    </style>
+</head>
+<body>
+    <div class="admin-container">
+        <h2>Amministrazione Menù</h2>
+        <div class="admin-controls">
+            <input type="text" id="item-name" placeholder="Nome del Prodotto">
+            <input type="text" id="item-price" placeholder="Prezzo">
+            <input type="text" id="item-section" placeholder="Sezione (taglieri, vini, birre, liquori)">
+            <input type="file" id="item-image">
+            <button onclick="addItem()">Aggiungi Voce</button>
+        </div>
+    </div>
+
+    <script>
+        function addItem() {
+            const name = document.getElementById('item-name').value;
+            const price = document.getElementById('item-price').value;
+            const section = document.getElementById('item-section').value.toLowerCase();
+            const imageFile = document.getElementById('item-image').files[0];
+
+            if (!name || !price || !section || !imageFile) {
+                alert('Compila tutti i campi!');
+                return;
+            }
+
+            const reader = new FileReader();
+            reader.onload = function(e) {
+                const menuData = JSON.parse(localStorage.getItem('menuData')) || {};
+
+                if (!menuData[section]) {
+                    menuData[section] = [];
+                }
+
+                menuData[section].push({ name, price, image: e.target.result });
+                localStorage.setItem('menuData', JSON.stringify(menuData));
+
+                alert('Voce aggiunta con successo!');
+            }
+            reader.readAsDataURL(imageFile);
+        }
+    </script>
+</body>
+</html>
